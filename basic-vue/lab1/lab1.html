@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app" class="container">
+        <div v-bind:class="rowCls">
+            <div class="col-md-12">
+                <h2>Posts Data</h2>
+                <hr>
+                <div>
+                    <h3>{{title}}</h3>
+                    <div>
+                        <a v-bind:href="link">
+                            Learn vue js
+                        </a>
+                    </div>
+                    <div style="color:blue"> V-html</div>
+                    <div v-html="text1">Html statement form js</div> 
+                    <div>Text from method : {{getText()}}</div>
+                </div>
+                <div style="color:blue">Events</div>
+                <button class="btn btn-primary" @click="increment">Increment</button> &nbsp
+                <button class="btn btn-primary" v-on:click="decrement()">Decrement</button>
+                <div>Current count : {{count}}</div>
+                <div style="color:blue">Native Event object $event</div>
+                <div class="mt3">
+                    <div class="form-group">
+                        <label > Enter Your Name</label>
+                        <input type="text" name="" class="form-control" v-on:input="setName($event,'lastname')">
+                        <div>Your Name is {{name}}</div>
+                    </div>
+                </div>
+                <div style="color:blue">Form submit</div>
+                <div class="mt3">
+                    <form v-on:submit.prevent="formsubmit()">
+                        <input type="text">
+                         <button >Submit Form</button>
+                    </form>
+                </div>
+                <div style="color:blue">V-once</div>
+                <input type="text" name="" class="form-control" v-on:input="setName($event,'lastname')"
+                v-on:keydown.enter="setConfirmedName($event)">
+                <div v-once>Your Initial Name is {{name}}</div>
+                <div>Your Name is {{name}}</div>
+                <div>On Enter this will be filled : Your Confirmed Name is {{confirmedName}}</div>
+                <div style="color:blue">V-model</div>
+                <input type="text" name="" class="form-control" v-model="databindingName">
+                <input type="text" name="" class="form-control" v-bind:value="databindingName1" v-on:input="setDatabindingName1($event)" >
+                <div>Your Name is {{databindingName}}</div>
+                <div>Your Name is {{databindingName1}}</div>
+                <div style="color:blue">Computed Property</div>
+                <div>Your Name is {{setDatabindingNameC}}</div>
+                <div style="color:blue">Watch</div>
+                <div>Your Name is {{databindingNameByWatch}}</div>
+
+            </div>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
